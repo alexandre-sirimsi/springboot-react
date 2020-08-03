@@ -30,6 +30,9 @@ class UpdateEmployeeComponent extends Component {
         e.preventDefault();
         let employee = {firstName: this.state.firstName, lastName: this.state.lastName, emailId: this.state.emailId};
         console.log('employee => ' + JSON.stringify(employee));
+        EmployeeService.updateEmployee(employee, this.state.id).then( res => {
+            this.props.history.push('/employees');
+        });
     }
 
     changeFirstNameHandler = (event) => {
@@ -50,7 +53,7 @@ class UpdateEmployeeComponent extends Component {
 
     render() {
         return (
-            <div>
+            <div style={{marginTop: "10px"}} >
                 <div className="container">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
